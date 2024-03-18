@@ -1,3 +1,20 @@
 Assumptions:
 Only one page interface needed for checking users and redemption.
+Users can make mistake so a delete button is necessary.
+Users don't need to know when the staff pass was created.
+Amount of teams are not in large numbers, which means pagination is not required as of scale.
+
 Able to utilise front-end libraries.
+
+How to run:
+FRONTEND: npm start
+BACKEND: npm run dev
+
+ports used: 3000 (backend), 3001 (frontend)
+
+Possible improvements:
+Pagination
+More consistent user interface design
+Possibly serving everything on the server side instead of splitting into front-end and back-end (More comfortable with react)
+
+P.S: kind of rushed through this, had only one and a half day free after my mid-terms and have not touched coding in awhile.

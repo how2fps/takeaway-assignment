@@ -1,4 +1,4 @@
-import { Alert, Button, Collapse } from "@mui/material";
+import { Alert, Button, Collapse, Snackbar } from "@mui/material";
 import { useEffect, useState } from "react";
 import DeleteDialog from "./components/DeleteDialog";
 import RedemptionTable from "./components/RedemptionTable";
@@ -14,6 +14,7 @@ export function App() {
        const [selectedStaff, setSelectedStaff] = useState<Staff | null>(null);
        const [openDeleteDialog, setOpenDeleteDialog] = useState<boolean>(false);
        const [selectedStaffIDToDelete, setSelectedStaffIDToDelete] = useState<string>("");
+       const [successfulDelete, setSuccessfulDelete] = useState<boolean>(false);
 
        useEffect(() => {
               const fetchStaffList = async () => {
@@ -61,8 +62,10 @@ export function App() {
                             },
                             body: JSON.stringify(redemptionData),
                      });
+                     console.log(response.status);
                      if (response.status === 200) {
                             fetchRedemptionList();
+                            setSuccessfulRedemption(true);
                             setTimeout(() => {
                                    setSuccessfulRedemption(false);
                             }, 3000);
@@ -100,6 +103,7 @@ export function App() {
                             },
                      });
                      if (response.status === 200) {
+                            setSuccessfulDelete(true);
                             fetchRedemptionList();
                      }
               } catch (e) {
@@ -147,6 +151,12 @@ export function App() {
                      <RedemptionTable
                             data={redemptionList}
                             onDeleteClick={onDeleteClick}
+                     />
+                     <Snackbar
+                            anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+                            open={successfulDelete}
+                            onClose={() => setSuccessfulDelete(false)}
+                            message={`Successfully deleted ${selectedStaffIDToDelete} from redemption table`}
                      />
               </div>
        );
