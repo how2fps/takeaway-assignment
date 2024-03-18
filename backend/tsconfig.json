@@ -1,0 +1,13 @@
+{
+       "compilerOptions": {
+              "module": "NodeNext",
+              "esModuleInterop": true,
+              "moduleResolution": "NodeNext",
+              "skipLibCheck": true,
+              "target": "es2022",
+              "allowJs": true,
+              "outDir": "./dist",
+              "lib": ["es2022"]
+       },
+       "exclude": ["./plugins/**/*", "./typings/**/*", "backend/dist/**/*"]
+}
